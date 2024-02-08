@@ -33,28 +33,29 @@ class ViewController: UIViewController {
     }
     
     @objc func labelTapped(_ gesture: UITapGestureRecognizer) {
+        print("print")
         setupattributedString()
     }
     
     func setupattributedString() {
-        let attributes: [NSAttributedString.Key: Any ] = [
-        .font: UIFont.boldSystemFont(ofSize: 18),
-        .foregroundColor: UIColor.systemPink,
-        .underlineStyle: NSUnderlineStyle.single.rawValue
-        ]
-        let attributedString = NSAttributedString(string: string, attributes: attributes)
         
-            label.attributedText = attributedString
-            
-        }
-        
+                let attributes: [NSAttributedString.Key: Any ] = [
+                .font: UIFont.boldSystemFont(ofSize: 18),
+                .foregroundColor: UIColor.systemPink,
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+                ]
+                let attributedString = NSAttributedString(string: string, attributes: attributes)
+                
+                    label.attributedText = attributedString
+                    
+                }
     
     //MARK: - не работает removeAttribute
     @IBAction func resetButton(_ sender: Any) {
-        setupLabel()
-//        attributedString.removeAttribute(.font, range: NSMakeRange(0, 0))
-//        attributedString.removeAttribute(.foregroundColor, range: NSMakeRange(0, 0))
-//        attributedString.removeAttribute(.underlineStyle, range: NSRange(location: 0, length: 21))
+       // setupLabel()
+        attributedString.removeAttribute(.font, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.removeAttribute(.foregroundColor, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.removeAttribute(.underlineStyle, range: NSRange(location: 0, length: attributedString.length))
     }
     
     
@@ -63,12 +64,13 @@ class ViewController: UIViewController {
     let attributes: [NSAttributedString.Key: Any ] = [
     .font: UIFont.boldSystemFont(ofSize: 25),
     .foregroundColor: UIColor.systemBlue,
-    .underlineStyle: NSUnderlineStyle.single.hashValue
+    .underlineStyle: NSUnderlineStyle.single.hashValue,
+    .underlineColor: UIColor.green
     ]
     let attributedString = NSAttributedString(string: string, attributes: attributes)
     
         label.attributedText = attributedString
-        
+    
     }
     
     @IBAction func segmentControlClik(_ sender: Any) {
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
             let attributedString = NSAttributedString(string: string, attributes: attributes)
             
                 label.attributedText = attributedString
+            let attriburedString = NSMutableAttributedString(string: string)
         }
 
     }
@@ -98,3 +101,11 @@ class ViewController: UIViewController {
     
 }
 
+//let attriburedString = NSMutableAttributedString(string: string)
+//let range = (string as NSString).range(of: "text")
+//let range1 = (string as NSString).range(of: "Some")
+//attributedString.addAttribute(.backgroundColor, value: UIColor.blue, range: range)
+//attributedString.addAttribute(.font, value: UIFont(name: "Callout-Bold", size: 21) as Any, range: range1)
+//attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.hashValue, range: range)
+//
+//label.attributedText = attributedString
